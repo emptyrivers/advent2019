@@ -27,7 +27,7 @@ use std::fs::File;
 
 pub fn get_data(path: &str) -> Vec<String> {
     let full_path = format!("./src/data/{}", path);
-    let res = File::open(std::path::Path::new(&full_path));
+    let res = File::open(&full_path);
     match res {
         Ok(f) => {
             BufReader::new(f)
@@ -40,6 +40,8 @@ pub fn get_data(path: &str) -> Vec<String> {
 }
 
 pub fn get_data_as_ints(path: &str) -> Vec<i64> {
-    let wordy_data = get_data(&path);
-    wordy_data.iter().map(|s| s.parse::<i64>().unwrap()).collect()
+    get_data(&path)
+        .iter()
+        .map(|s| s.parse::<i64>().unwrap())
+        .collect()
 }

@@ -141,7 +141,7 @@ pub fn solve() -> u128 {
                         }
                     }
                 },
-               Segment::Vertical{..} => {
+                Segment::Vertical{..} => {
                     for blue in &horiz {
                         match find_intersect(&blue, &segment) {
                             Ok(p) => {
