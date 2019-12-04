@@ -13,7 +13,11 @@ fn main() {
         "2" => opcodes::solve(),
         _ => println!("I don't know which problem that is, sorry.")
     };
-    println!("Elapsed time: {}", start.elapsed().as_micros())
+    let nanos = start.elapsed().as_nanos();
+    let millis = nanos / 1_000_000;
+    let submillis = (nanos % 1_000_000) as f64;
+    let elapsed: f64 = millis as f64 + submillis / 1_000_000 as f64;
+    println!("Elapsed time: {}ms", elapsed)
 }
 
 use std::io::BufRead;
