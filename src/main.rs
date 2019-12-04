@@ -1,15 +1,18 @@
 
 use std::env;
 mod tyranny;
+mod opcodes;
 
 fn main() {
     println!("Advent Module Runner");
     let args: Vec<String> = env::args().collect();
     match &args[1][..] {
         "1" => tyranny::solve(),
+        "2" => opcodes::solve(),
         _ => println!("I don't know which problem that is, sorry.")
     }
 }
+
 use std::io::BufRead;
 use std::io::BufReader;
 use std::fs::File;
