@@ -1,8 +1,11 @@
 
 use std::env;
-mod tyranny;
-mod opcodes;
 use std::time::Instant;
+
+// solutions
+mod tyranny; // Day 1
+mod opcodes; // Day 2
+mod wires;   // Day 3
 
 fn main() {
     println!("Advent Module Runner");
@@ -11,6 +14,7 @@ fn main() {
     match &args[1][..] {
         "1" => tyranny::solve(),
         "2" => opcodes::solve(),
+        "3" => wires::solve(),
         _ => println!("I don't know which problem that is, sorry.")
     };
     let nanos = start.elapsed().as_nanos();
