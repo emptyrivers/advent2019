@@ -5,7 +5,6 @@ mod tyranny;
 fn main() {
     println!("Advent Module Runner");
     let args: Vec<String> = env::args().collect();
-    // println!("{}", env::current_dir().unwrap().to_str().unwrap());
     match &args[1][..] {
         "1" => tyranny::solve(),
         _ => println!("I don't know which problem that is, sorry.")
