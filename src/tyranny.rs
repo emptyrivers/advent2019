@@ -4,11 +4,10 @@ fn get_fuel(mass: i64) -> i64 {
 }
 
 pub fn solve() {
-    let data = super::get_data("01_tyranny.txt");
+    let data = super::get_data_as_ints("01_tyranny.txt");
     let mut mass = 0;
     let mut supermass = 0;
-    for word in data.iter() {
-        let num = word.parse::<i64>().unwrap();
+    for &num in data.iter() {
         let mut rem_mass = get_fuel(num);
         mass += rem_mass;
         supermass += rem_mass;

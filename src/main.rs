@@ -27,3 +27,8 @@ pub fn get_data(path: &str) -> Vec<String> {
         Err(error) => {panic!("{:?} - full path: {}", error, &full_path);},
     }
 }
+
+pub fn get_data_as_ints(path: &str) -> Vec<i64> {
+    let wordy_data = get_data(&path);
+    wordy_data.iter().map(|s| s.parse::<i64>().unwrap()).collect()
+}
