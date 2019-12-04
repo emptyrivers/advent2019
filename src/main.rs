@@ -2,15 +2,18 @@
 use std::env;
 mod tyranny;
 mod opcodes;
+use std::time::Instant;
 
 fn main() {
     println!("Advent Module Runner");
     let args: Vec<String> = env::args().collect();
+    let start = Instant::now();
     match &args[1][..] {
         "1" => tyranny::solve(),
         "2" => opcodes::solve(),
         _ => println!("I don't know which problem that is, sorry.")
-    }
+    };
+    println!("Elapsed time: {}", start.elapsed().as_micros())
 }
 
 use std::io::BufRead;
