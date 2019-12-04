@@ -1,12 +1,13 @@
-
+use std::time::Instant;
 fn get_fuel(mass: i64) -> i64 {
     ((mass / 3) - 2).abs()
 }
 
-pub fn solve() {
+pub fn solve() -> u128 {
     let data = super::get_data_as_ints("01_tyranny.txt");
     let mut mass = 0;
     let mut supermass = 0;
+    let start = Instant::now();
     for &num in data.iter() {
         let mut rem_mass = get_fuel(num);
         mass += rem_mass;
@@ -17,5 +18,6 @@ pub fn solve() {
         }
     }
     println!("Part 1: Total mass is {}", mass);
-    println!("Part 2: Super total is {}", supermass)
+    println!("Part 2: Super total is {}", supermass);
+    start.elapsed().as_nanos()
 }

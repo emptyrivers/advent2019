@@ -106,10 +106,11 @@ fn find_intersect(a: &Segment, b: &Segment) -> Result<Point, ()> {
         }
     }
 }
-
-pub fn solve() {
+use std::time::Instant;
+pub fn solve() -> u128 {
     let data = super::get_data("03_wires.txt");
     let mut end = Point(0, 0);
+    let start = Instant::now();
     let (mut vert, mut horiz): (Vec<Segment>, Vec<Segment>) = data[0]
         .split(",")
         .map(|dat| create_segment(&dat, &mut end))
@@ -117,7 +118,6 @@ pub fn solve() {
             Segment::Vertical{..} => true,
             Segment::Horizontal{..} => false,
         });
-    println!("Vertical segments: {}, and horizontal: {}", vert.len(), horiz.len());
     end = Point(0, 0);
     let mut best_distance = 0;
     let mut best_inter = Point(0, 0);
@@ -164,5 +164,5 @@ pub fn solve() {
         }
     }
     println!("Best possible intersection is at ({},{}), dist = {}", best_inter.0, best_inter.1, best_distance); 
-
+    start.elapsed().as_nanos()
 }

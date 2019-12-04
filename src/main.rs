@@ -1,6 +1,5 @@
 
 use std::env;
-use std::time::Instant;
 
 // solutions
 mod tyranny; // Day 1
@@ -10,14 +9,12 @@ mod wires;   // Day 3
 fn main() {
     println!("Advent Module Runner");
     let args: Vec<String> = env::args().collect();
-    let start = Instant::now();
-    match &args[1][..] {
+    let nanos = match &args[1][..] {
         "1" => tyranny::solve(),
         "2" => opcodes::solve(),
         "3" => wires::solve(),
-        _ => println!("I don't know which problem that is, sorry.")
+        _ => panic!("I don't know which problem that is, sorry.")
     };
-    let nanos = start.elapsed().as_nanos();
     let millis = nanos / 1_000_000;
     let submillis = (nanos % 1_000_000) as f64;
     let elapsed: f64 = millis as f64 + submillis / 1_000_000 as f64;

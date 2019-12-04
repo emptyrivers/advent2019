@@ -27,9 +27,11 @@ fn evaluate(data: &Vec<i64>, noun: i64, verb: i64) -> i64 {
     panic!("Reached end of memory without stopping")
 }
 
+use std::time::Instant;
 
-pub fn solve() {
+pub fn solve() -> u128 {
     let data = super::get_data_as_ints("02_opcodes.txt");
+    let start = Instant::now();
     println!("Part 1: Result is {}", evaluate(&data, 12, 2));
     for noun in 0..100 {
         for verb in 0..100 {
@@ -42,4 +44,5 @@ pub fn solve() {
             }
         }
     }
+    start.elapsed().as_nanos()
 }
